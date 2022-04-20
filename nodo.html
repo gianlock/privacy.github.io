@@ -79,18 +79,23 @@
 					</center>
 
 					<b> Raspiblitz è un nodo lightning fai da te (LND o c-lightning) che funziona insieme ad un nodo bitcoin su un Raspberry pi4 (1TB SSD), con un bel
-						display per un setup semplice e per monitorare le informazioni sul nodo.
+						display (opzionale) per un setup semplice e per monitorare lo stato del dispositivo.
 					</b>
-
 					<p>
-						L'obiettivo di Raspiblitz è di imparare a far girare il proprio nodo decentralizzato in casa, perché come dice il detto "Not your node, not your rules" (nodo non tuo, regole non tue). Scopri e sviluppa
-						il tuo nodo sull'ecosistema Lightning Network diventando una parte di esso. Costruiscilo per il tuo negozio o come progetto informatico nel week-end!
+						  Ho personalmente scelto di portare questa guida scegliendo come base Raspiblitz in quanto mi sembra il sistema con il miglior compromesso tra
+							privacy, sicurezza e semplicita' d'uso al momento, ovviamente l'ideale sarebbe sempre e comunque compilare ed installare tutti i componenti autonomamente
+							ma trovo che questo sia gia' un ottimo punto da cui partire.<br /><br />
+							<blackquote style="color:grey">
+							Ci terrei a specificare che la scrittura di questa guida (in gran parte tradotta direttamente dal tutorial di installazione fatto in inglese dagli sviluppatori
+							di RaspiBlitz) e' avvenuta con l'aiuto di un collaboratore pagato con i satoshi delle donazioni da voi ricevute e con il duro lavoro di Gian (contributor github)
+							che ha deciso di supportarmi nella traduzione in modo totalmente volontario solo per supportare il mondo Opensource e la cummunity Bitcoin <span style='font-size:100%;'>&#128154;</span>
+							</blackquote>
 					</p>
+
 
 					<h2>Tabella dei contenuti</h2>
 					<ul>
 						<li><a href="#overview">Overview delle caratteristiche</a></li>
-						<li><a href="#video">Video DeepDive (Luglio 2020)</a></li>
 						<li><a href="#tempo">Tempo stimato per creare un nodo con Raspiblitz</a></li>
 						<li><a href="#hardware">Hardware necessario</a></li>
 						<li><a href="#assembla">Assembla il tuo raspiblitz</a></li>
@@ -112,35 +117,25 @@
 
 
 					<div id="overview"><h2>Overview delle caratteristiche</h2></div>
-					<p>Esistono diversi servizi che possono essere integrati:</p>
+					<p>Esistono diversi servizi che possono essere integrati in pochi click nel vostro nodo, elenco qua i piu' importanti:</p>
 					<ul>
-						<li>TOR (gira come un servizio nascosto (hidden service)</li>
-						<li>ElectRS (Electrum Service scritto in Rust)</li>
-						<li>BTCPayServer (Processore di pagamento per criptovalute)</li>
+						<li>TOR (attivo di default, fara' girare il vostro nodo totalmente attraverso la rete TOR per proteggere la vostra privacy)</li>
+						<li>ElectRS (da abilitare per connettere wallet basati su Electrum al vostro nodo)</li>
+						<li>BTCPayServer (Processore di pagamenti Bitcoin)</li>
 						<li>BTC-RPC-Explorer (Bitcoin blockchain explorer)</li>
 						<li>LNbits (Wallet Lightning/sistema di gestione degli account)</li>
-						<li>SpecterDesktop (Multisig per Trezor, Ledger, COLDCARDwallet & Specter-DYI)</li>
+						<li>SpecterDesktop (Wallet basato sul wallet-cli di bitcoin core ma con GUI e funzioni aggiuntive per portafogli MultiSig)</li>
 						<li>Lightning Terminal (Loop, Pool & Faraday) (Controlla la liquidità dei canali)</li>
-						<li>JoinMarket (servizio di CoinJoin)</li>
+						<li>JoinMarket (servizio di CoinJoin decentralizzato)</li>
 						<li>JoinMarket Web UI (Interfaccia grafica browser per JoinMarket</li>
-						<li>ThunderHub (Gestione Nodo lightning per Web)</li>
-						<li>Balance Of Satoshis (Comandi per gestire gli importi di LND)</li>
-						<li>Kindle Display (Barra di stato con un display per Bitcoin creato con un Kindle jailbreakkato)</li>
+						<li>ThunderHub (Gestione web del Nodo lightning)</li>
 						<li>Stacking Sats Kraken (Servizio di DCA automatico)</li>
-						<li>Circuit Breaker (Firewall per canale lightning)</li>
-						<li>PyBlock (Utility per Python & script interessanti</li>
 						<li>Mempool Explorer</li>
-						<li>Sphinx Chat Relay Server</li>
-						<li>Telegraf metrics</li>
-						<li>Chantools (recupero di fondi)</li>
+						<li>Chantools (tool di recupero di fondi da canali LN)</li>
 						<li>Suez (visualizzatore di canali per LND & CL</li>
-						<li>Helipad (Servizio di podcast 2.0 e lettore Boostagram</li>
-						<li>CL Spark Wallet (Wallet grafico con fatture BOLT12)</li>
-						<li>CL plugin: Sparko (Wallet grafico & bridge HTTP-RPC)</li>
-						<li>CL plugin: CLBOSS (Gestione automatica del nodo)</li>
-						<li>Tallycoin Connect (per integrare Tallycoin con il tuo nodo)</li>
+						<li>CL plugin: CLBOSS (Gestione automatica del nodo LN)</li>
 					</ul>
-					<p>Puoi connettere le seguenti applicazioni per wallet con il tuo RaspiBlitz:</p>
+					<p>Puoi connettere i seguenti wallet LN mobile per gestire il tuo nodo da remoto:</p>
 					<ul>
 						<li>Zeus (Android e iOS)</li>
 						<li>Zap (Android & iOS</li>
@@ -148,39 +143,31 @@
 						<li>SendMany (Android)</li>
 						<li>Sphinx Chat App (Android & iOS)</li>
 					</ul>
-					<p>E inoltre molte altre caratteristiche tipo il Touchscreen, il gestore automatico (autopilot) per i canali, Backup, DynDNS, Tunneling SSH, Supporto UPS (gruppo di continuità), ...</p>
 
-
-					<div id="video"></div><h2>DeepDive Video (Luglio 2020)</h2>
-					<iframe src="https://www.youtube.com/embed/QXUGg45CWLo" ></iframe>
-					<p>--guarda --> <a href="https://www.youtube.com/watch?v=QXUGg45CWLo">https://www.youtube.com/watch?v=QXUGg45CWLo</a></p>
-
-					<div id="tempo"></div><h2>Tempo stimato per settare un RaspiBlitz</h2>
-					<p>RaspiBlitz è studiato e ottimizzato per essere messo a punto in poco tempo, in qualsiasi ambiente. Se lo compri già assemblato e sincronizzato
+					<div id="tempo"></div><h2>Tempo stimato per avere il nodo pronto all'uso</h2>
+					<p>RaspiBlitz è studiato e ottimizzato per essere messo a punto in poco tempo in qualsiasi ambiente. Se lo compri già assemblato e sincronizzato
 						con la blockchain, è possibile iniziare ad usarlo in circa 2 o 3 ore.
 						<br>
-						Invece ordinando tutte le componenti su Amazon (guarda la lista dei componenti qui sotto) allora il processo diventa più lungo. Tra scaricare i file e sincronizzare la blockchain ci impiegherai qualche giorno,
-						ma potrai controllare l'andamento delle operazioni mentre fai altro. 
+						Ordinando invece tutte le parti online (guarda la lista dei componenti qui sotto) allora il processo diventa più lungo. Tra scaricare i file e sincronizzare la blockchain ci impiegherai qualche giorno,
+						ma potrai controllare l'andamento delle operazioni mentre fai altro.
 						<br>
 						Se già possiedi un nodo con Umbrel, Citadel o myNode hai già tutto l'hardware necessario e puoi effettuare una migrazione a RaspiBlitz in circa un'ora.
 					</p>
 
 					<div id="hardware"></div><h2>Hardware necessario</h2>
-					<p>L'insieme di tutte le componenti viene sui 180-250 dollari - basandosi tra sui prezzi online e in negozio</p>
+					<p>L'insieme di tutti i componenti viene sui 150 - 250 Euro in base alle disponibilita' nei vari store.</p>
+					<p>Nel caso volessi supportare il progetto di RaspiBlitz puoi ordinare un nodo già pronto su <a href="https://raspiblitz.com/">raspiblitz.com</a>,<br />
+					Puoi trovare una lista di negozi che vendono nodi pronti all'uso nella tua zona su <a href="https://raspiblitz.org/">raspiblitz.org</a></p>
 
-					<b>Compra un RaspiBlitz pronto all'uso (Germania, EU e Internazionale)</b>
-					<p>Nel caso volessi supportare il progetto di RaspiBlitz puoi ordinare un RaspiBlitz già pronto su <a href="https://raspiblitz.com/">raspiblitz.com</a></p>
-					<p>Puoi trovare una lista di negozi che vendono RaspiBlitz pronti all'uso nella tua zona su <a href="https://raspiblitz.org/">raspiblitz.org</a></p>
-
-					<b>Lista della spesa di Amazon (compra le componenti e costruiscilo autonomamente)</b>
+					<b>Lista dei componenti per costruire autonomamente il tuo nodo:</b>
 					<p>
-						Il modo più economico per avere un RaspiBlitz è di comprare e assemblare le singole parti da solo. Ci sono due pacchetti.
+						Il modo più economico per avere un nodo è di comprare e assemblare le singole parti da solo.
 						<br>
 						<br>
-						<i>E' consigliabile acquistare le precise componenti raccomandate in questa lista. Abbiamo avuto esperienze in cui prodotti simili,
-							per esempio, altri SSD o custodie per SSD/controller hanno comportato problemi di compatibilità. Nella lista sono indicate le migliori componenti che funzionano compatibilmente e sono
-							state testate per il progetto. Eventuali raccomandazioni su possibili miglioramenti sono sempre benvenute.
-						</i>
+						<blackquote style="color:grey">E' consigliabile acquistare le precise componenti raccomandate in questa lista. Abbiamo avuto esperienze in cui prodotti simili,
+							per esempio altri SSD o custodie per SSD/controller hanno comportato problemi di compatibilità. Nella lista sono indicate le migliori parti che funzionano e sono
+							state testate. Eventuali raccomandazioni su possibili miglioramenti sono sempre benvenute.
+						</blackquote>
 						<ul>
 							<li>RaspberryPi 4 4GB (o 8GB)</li>
 							<li>Alimentatore- USB-C, 5V, >=3A</li>
@@ -196,61 +183,64 @@
 							<li>kuman 3.5 Inch Touch Screen TFT Monitor</li>
 							<li>Waveshare 3.5inch Display for Raspberry Pi</li>
 						</ul>
-						<p>Puoi anche pagare per il tuo RaspiBlitz su Amazon con Bitcoin & Lightning Network usando Bitrefill.</p>
+						<p>Puoi anche pagare i componenti per il tuo nodo su Amazon con Bitcoin & Lightning Network usando Bitrefill.</p>
 
-						<div id="assembla"></div><h2>Assemblare il tuo Raspberry Pi</h2>
+						<div id="assembla"></div><h2>Assemblare il Raspberry</h2>
 						<p>
 							Una volta ottenute tutte le componenti avrai bisogno di:
 							<ul>
-								<li>Assemblare il tuo case dissipa calore sul Raspberry Pi (segui le istruzioni nella confezione)</li>
-								<li>Inserire l'SSD/HDD nel case e connetterlo via USB utilizzando le porte blu del tuo Raspberry Pi</li>
+								<li>Assemblare il tuo case dissipa calore sul Raspberry (segui le istruzioni nella confezione)</li>
+								<li>Inserire l'SSD/HDD nel case e connetterlo via USB utilizzando le porte blu (USB 3.1) del tuo Raspberry</li>
 								<li>Aggiungere il display in alto con i pin disposti come nell'immagine sottostante</li>
 								<li>Inserire il cavo di rete.</li>
 							</ul>
-							Alla fine il tuo RaspiBlitz dovrebbe assomigliare a questo:
+							Alla fine il tuo PI dovrebbe assomigliare a questo:<br /><br />
 							<img src="https://raw.githubusercontent.com/rootzoll/raspiblitz/v1.7/pictures/hardwaresetup.jpg">
 							<br>
-							<div id="scarica"></div><b>Scaricare il software</b>
+							<div id="scarica"></div><b>Scaricare il software:</b>
 							<br>
 							<br>
+							<br />
 							<table>
 								<thead>
 									<tr>
 										<th>Metodo</th>
-										<th>Installare l'immagine</th>
-										<th>Caricare la scheda SD</th>
+										<th>Installare l'immagine pronta</th>
+										<th>Compilare autonomamente l'immagine</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
 										<td>Filosofia</td>
-										<td>Fidarsi</td>
-										<td>Sovranità personale</td>
+										<td>Fidarsi degli sviluppatori di RaspiBlitz</td>
+										<td>Totale autonomia</td>
 									</tr>
 									<tr>
 										<td>Livello di difficoltà</td>
 										<td>Facile</td>
-										<td>Medio</td>
+										<td>Difficile</td>
 									</tr>
 									<tr>
 										<td>Pro</td>
-										<td>Rendere Blitz accessibile a tutti</td>
-										<td>Non hai bisogno di fidarti di noi, crea il tuo fork personale</td>
+										<td>Rendere RaspiBlitz accessibile a tutti</td>
+										<td>Nessuna fiducia verso enti terzi</td>
 									</tr>
 									<tr>
 										<td>Istruzioni</td>
-										<td><a href="https://raspiblitz.fulmo.org/images/raspiblitz-v1.7.2-2022-02-20.img.gz" rel="nofollow">Scarica l'immagine 1.7.2</a> and <a href="/rootzoll/raspiblitz/blob/v1.7/README.md#write-the-sd-card-image-to-your-sd-card">Carica la tua scheda sd</a></td>
-										<td><a href="#build-the-sd-card-image">Crea la tua immagine per la scheda sd personale</a></td>
+										<td><a href="https://raspiblitz.fulmo.org/images/raspiblitz-v1.7.2-2022-02-20.img.gz" rel="nofollow">Scarica</a> e <a href="/rootzoll/raspiblitz/blob/v1.7/README.md#write-the-sd-card-image-to-your-sd-card">Installa</a></td>
+										<td><a href="#build-the-sd-card-image">Compila in autonomia</a></td>
 										</tr>
 									<tr>
-										<td>Verificare cosa?</td>
-										<td><a href="https://raspiblitz.fulmo.org/images/raspiblitz-v1.7.2-2022-02-20.img.gz.sig" rel="nofollow">File di firma</a> e <a href="/rootzoll/raspiblitz/blob/v1.7/FAQ.md#how-to-verify-the-sd-card-image-after-download">verifica della firma</a> o SHA-256 (sotto)</td>
-										<td>Tutto il codice, "non fidarti, verifica".</td>
+										<td>Verifica</td>
+										<td><a href="https://raspiblitz.fulmo.org/images/raspiblitz-v1.7.2-2022-02-20.img.gz.sig" rel="nofollow">Firma</a> e <a href="/rootzoll/raspiblitz/blob/v1.7/FAQ.md#how-to-verify-the-sd-card-image-after-download">Verifica</a> o SHA-256 (sotto)</td>
+										<td>Verifica da solo il codice che compili</td>
 									</tr>
 								</tbody>
 							</table>
+							<br />
+							<br />
 
-							Se stai scaricando direttamente dal provider dell'immagine della scheda SD:
+							Se stai scaricando l'immagine della scheda SD e vuoi verificarla:
 							<br>
 							<ul>
 								<li>GPG 64-bit (principale): 1C73 060C 7C17 6461 & (sub): AA9D D1B5 CC56 47DA</li>
@@ -258,12 +248,12 @@
 							</ul>
 							Che metodo di verifica dovrei utilizzare: hash o firma?
 							<ul>
-								<li>Un file firmato dà la prova che l'immagine della tua scheda SD è stata creata dallo sviluppatore principale del progetto di RaspiBlitz</li>
-								<li>La funzione di hash verifica l'integrità del file (sicuro)</li>
+								<li>Un file firmato dà la prova che l'immagine della tua scheda SD è stata creata dallo sviluppatore principale del progetto di RaspiBlitz.</li>
+								<li>La funzione di hash verifica l'integrità del file.</li>
 							</ul>
 							L'immagine della scheda SD può anche essere scaricata usando Torrent:
 							<ul>
-								<li><a href="https://github.com/rootzoll/raspiblitz/raw/dev/home.admin/assets/raspiblitz-v1.7.2-2022-02-20.img.gz.torrent">assets/raspiblitz-v1.7.2-2022-02-20.img.gz.torrent</a></li>
+								<li><a href="https://github.com/rootzoll/raspiblitz/raw/dev/home.admin/assets/raspiblitz-v1.7.2-2022-02-20.img.gz.torrent">Raspiblitz-v1.7.2-2022-02-20.img.gz.torrent</a></li>
 							</ul>
 						</p>
 
@@ -276,39 +266,40 @@
 
 						<div id="avvia"></div><h2>Avviare il tuo RaspiBlitz</h2>
 						<p>
-							Inserisci la scheda SD e connetti il cavo di alimentazione
+							Inserisci la scheda SD e connetti il cavo di alimentazione.
 							<ul>
-								<li>A questo punto, assicurati di aver connesso il Raspberry Pi con un cavo LAN ad Internet</li>
-								<li>Assicurati che il tuo computer e il tuo Raspberry siano connessi nella stessa rete locale</li>
+								<li>A questo punto, assicurati di aver connesso il Raspberry Pi con un cavo LAN ad Internet.</li>
+								<li>Assicurati che il tuo computer e il tuo Raspberry siano connessi nella stessa rete locale.</li>
 							</ul>
-							Sarà necessario un riavvio. Se tutto funziona correttamente dovresti finalmente vedere il tuo indirizzo IP locale del tuo RaspiBlitz nel
-							pannello LCD.
+							Sarà necessario un riavvio. Se tutto funziona correttamente dovresti finalmente vedere il tuo indirizzo IP locale del tuo Nodo nel
+							pannello LCD (se non hai uno schermo dovrai cercare l'IP del raspberry nella tua rete).
 							<br>
+							<br />
 							<img src="https://raw.githubusercontent.com/rootzoll/raspiblitz/v1.7/pictures/lcd0-welcome.png">
 							<br>
-							Adesso apri un terminale e connettiti attraverso SSH con il comando mostrato nel RaspiBlitz:
+							Adesso apri un terminale e connettiti attraverso SSH con il comando mostrato a schermo (su Windows puoi utilizzare Putty mentre su Linux SSH e' gia' integrato nel terminale di sistema):<br />
 							<br>
-							ssh admin@[*inserisci il tuo IP*] --> usa la password: raspiblitz
-							<br>
-							<b>Ora segui il dialogo nel tuo terminale</b>
+							ssh admin@ [*inserisci il tuo IP*] --> usa la password: raspiblitz
+							<br><br />
+							Ora segui i dialoghi nel tuo terminale.
 						</p>
 
 						<div id="supporto"</div><h2>Supporto</h2>
 						<p>
-							Se incorri in un problema o hai delle domande, segui i seguenti passi. Inoltre controlla la documentazione del setup
-							per i dettagli.
+							Se incorri in un problema o hai delle domande, segui i seguenti passi e controlla la documentazione del setup
+							per i dettagli.<br />
 							<b>Documentazione</b>
 							<ol>
 								<li>Se non riesci a trovare risposta al tuo quesito, dai un'occhiata alle <a href="https://github.com/rootzoll/raspiblitz/blob/v1.7/FAQ.md">FAQ</a></li>
 								<li>Se hai un problema con l'hardware, per favore controlla che le tue componenti siano esattamente quelle raccomandate nella lista sopra.
 									Diversi schermi o anche custodie per SSD possono causare problemi.
 								</li>
-								<li>Cerca di capire se il tuo problema è con RaspiBlitz o ad esempio con LND/c-lightning. Per esempio se non puoi pagare o hai un errore quando stai aprendo
-									un canale questo è un problema di LND/c-lightning e le risposte migliori le trovi nella comunità di sviluppo LND o nella documentazione di c-lightning.
+								<li>Cerca di capire se il tuo problema è con RaspiBlitz o ad esempio con LND/c-lightning. Se per esempio non puoi pagare un invoice o hai un errore quando stai aprendo
+									un canale lightning questo è un problema di LND/c-lightning e le risposte migliori le trovi nella comunità di sviluppo LND o nella documentazione di c-lightning.
 								</li>
 								<li>Controlla la pagina dei problemi di RaspiBlitz: <a href="https://github.com/rootzoll/raspiblitz/issues">https://github.com/rootzoll/raspiblitz/issues</a>
-								 Prova a fare una ricerca qui. Controlla anche i problemi chiusi rimuovendo 'is:open' dai filtri o dal box di ricerca.</li>
-								 <li>Se non hai ancora trovato risposta alle tue domande, apri un problema nella pagina RaspiBlitz di GitHub. Potresti doverti prima registrare a GitHub per farlo.
+								  Verifica anche i problemi chiusi rimuovendo 'is:open' dai filtri o dal box di ricerca.</li>
+								 <li>Se non hai ancora trovato risposta alle tue domande, apri un problema nella pagina RaspiBlitz di GitHub. Potresti doverti prima registrare per farlo.
 									 Se hai un bug con RaspiBlitz, per favore aggiungi (copiando e incollando) un report di debug al tuo problema (guarda le FAQ per capire come generarlo), e/o aggiungi
 									alcuni screenshot/foto così che la community intuisca meglio il tuo problema.
 								 </li>
@@ -325,40 +316,40 @@
 
 						<div id="processo"></div><h2>Configurazione di base</h2>
 						<p>
-							Ogni volta che inizi la configurazione con una nuova scheda SD ti verranno proposte diverse opzioni. Per esempio questo è anche il punto dove puoi
-							importare un file di migrazione da un tuo vecchio RaspiBlitz - leggi circa la migrazione più in basso. Ma siccome stai creando un nuovo RaspiBlitz sceglierai l'opzione
+							Ogni volta che inizi la configurazione con una nuova scheda SD ti verranno proposte diverse opzioni. Per esempio questo è il punto dove puoi
+							importare un file da un tuo vecchio Backup - leggi circa la migrazione più in basso. Ma siccome stai creando un nuovo nodo sceglierai l'opzione
 							FRESHSETUP
 							<br><br>
 							<img src="https://github.com/rootzoll/raspiblitz/raw/v1.7/pictures/ssh0-welcome2.png">
 							<br><br>
 							Quindi ti verrà chiesto cosa bisogna fare con l'HDD/SDD connesso.
-							Se c'è già una blockchain nel tuo HDD/SDD ti verrà chiesto se vuoi usare questi dati già sincronizzati o se va bene eliminarli. Se non ci sono dati della blockchain
+							Se c'è già una blockchain nel tuo disco ti verrà chiesto se vuoi usare i dati già presenti o se va preferisci eliminarli. Se non ci sono dati
 							questa domanda non verrà posta.
 							<br><br>
 							<img src="https://github.com/rootzoll/raspiblitz/raw/v1.7/pictures/ssh0-askchain.png">
 							<br><br>
-							In fine dovrai dovrai confermare che tutti gli altri dati nell'HDD/SDD saranno eliminati, ad eccezione della blockchain selezionata precedentemente.
+							Infine dovrai confermare che tutti gli altri dati nell'HDD/SDD saranno eliminati.
 							Questa operazione potrebbe richiedere qualche secondo.
 							<br><br>
 							<img src="https://github.com/rootzoll/raspiblitz/raw/v1.7/pictures/ssh0-formathdd.png">
 							<br><br>
-							La prima cosa da fare è dare un nome al tuo RaspiBlitz:
+							La prima cosa da fare è dare un nome al tuo nodo:
 							<br><br>
 							<img src="https://github.com/rootzoll/raspiblitz/raw/v1.7/pictures/ssh1-name.png">
 							<br><br>
 							Il nome che scegli per il nodo sarà anche utilizzato come alias (nome) pubblico del tuo nodo lightning quindi scegli attentamente.
-							Quindi puoi scegliere quale implementazione di lightning vuoi utilizzare sopra al tuo nodo bitcoin. RaspiBlitz ha iniziato con LND di Lightning Labs che è utilizzato
-							dalla maggior parte dei nodi lightning su Raspberry Pi e funziona con molte applicazioni aggiuntive. Ma ora puoi anche scegliere CL per c-lightning della Blockstream
-							che è una buona scelta per operatori di nodi più esperti & sviluppatori lightning che vogliono utilizzare un plugin molto personalizzabile che c-lightning offre.
-							È anche possibile usare entrambe le implementazioni di lightning in parallelo al tuo RaspiBlitz successivamente - scegliene uno giusto per iniziare ora.
+							Puoi scegliere anche quale implementazione di lightning vuoi utilizzare sopra al tuo nodo bitcoin. RaspiBlitz consuiglia LND di Lightning Labs che è utilizzato
+							dalla maggior parte dei nodi lightning su Raspberry e funziona con molte applicazioni aggiuntive. Ma puoi anche scegliere CL per c-lightning di Blockstream
+							che è una buona scelta per operatori di nodi più esperti e sviluppatori lightning che vogliono utilizzare i plugin molto personalizzabili che c-lightning offre.
+							È anche possibile usare entrambe le implementazioni di lightning in parallelo ma e' caldamente sconsigliato.
 							Scegli NONE se sei solo interessato ad utilizzare un nodo bitcoin senza lightning.
 							<br><br>
 							<img src="https://github.com/rootzoll/raspiblitz/raw/v1.7/pictures/ssh1-layer2.png">
 							<br><br>
-							<i>Successivamente noi utilizziamo la configurazione utilizzando LND - che è molto simile ai passi da fare con c-lightning</i>
+							<i>In questa guida faremo l'esempio di usare LND ma i passi da fare con c-lightning sono praticamente identici.</i>
 							<br>
 							Se hai scelto di utilizzare una delle implementazioni di lightning ti verrà richiesto se vuoi iniziare con un nuovo wallet/nodo lightning, o se hai un vecchio wallet
-							lightning/nodo che vuoi ricreare.
+							lightning/nodo che vuoi ripristinare.
 							<br><br>
 							<img src="https://github.com/rootzoll/raspiblitz/raw/v1.7/pictures/ssh1-oldnew.png">
 							<br><br>
@@ -373,7 +364,7 @@
 							Scegli questa opzione se hai già un backup completo dei dati di LND o c-lightning e hai un file tar.gz che inizia con le parole 'lnd-rescue' o 'cl-rescue' disponibile.
 							Recupererai tutti i tuoi fondi onchain e i canali aperti che avevi.
 							<br>
-							Attenzione: devi assicurarti che il backup di recupero che hai sia veramente l'ultimo disponibile - altrimenti potresti perdere i fondi che hai sul canale.
+							Attenzione: devi assicurarti che il backup di recupero che hai sia veramente l'ultimo disponibile - altrimenti potresti perdere i fondi che hai sui canali.
 							<br><br>
 							<i>Se hai un file tar.gz che inizia con 'raspiblitz', questo è un file di migrazione. Include anche il tuo vecchio wallet LND/c-lightning, ma devi
 								importare questo file all'inizio della configurazione selezionando 'FROMBACKUP - Upload Migration Backup' invece di scegliere FRESHSETUP
@@ -382,8 +373,11 @@
 							<br><br>
 							<b>SEED + SCB Worlds Seed & file channel.backup (OK)</b>
 							<br>
-							La miglior opzione è disporre del file channel.backup e del tuo seed. Questo ti permette di recuperare tutti i tuoi fondi onchain (i.e. "importo bitcoin") nel tuo wallet lightning e ti dà una buona possibilità di recuperare i tuoi fondi off-chain (i.e. "importo lightning") che avevi sui tuoi canali aperti, finché il tuo nodo remoto supporta la funzione 'option_data_loss_protect' che è molto comune sin dal 2020. Tutti i canali che avevi aperto precedentemente saranno chiusi durante questa procedura.
-							Guarda <a href="https://bitcoinops.org/en/topics/static-channel-backups/">Bitcoin Optech - Static Channel Backups</a> per maggiori dettagli circa le informazioni di background di questo processo.
+							La miglior opzione è disporre del file channel.backup e del tuo seed. Questo ti permette di recuperare tutti i tuoi fondi onchain (i.e. "importo bitcoin") nel tuo wallet lightning e ti dà
+							una buona possibilità di recuperare i tuoi fondi off-chain (i.e. "importo lightning") che avevi sui tuoi canali aperti, a patto che il tuo nodo remoto
+							supporti la funzione 'option_data_loss_protect' che è molto comune sin dal 2020. Tutti i canali che avevi aperto precedentemente saranno chiusi durante
+							questa procedura.
+							Guarda <a href="https://bitcoinops.org/en/topics/static-channel-backups/">Bitcoin Optech - Static Channel Backups</a> per maggiori dettagli circa le informazioni questo processo.
 
 							<br><br>
 							<b>SOLO SEED</b>
@@ -391,31 +385,29 @@
 							Se hai solo la lista di parole del seed (Dalla versione RaspiBlitz 1.1 e precedenti) puoi almeno recuperare i tuoi fondi onchain.
 							Il recupero dei fondi nei canali è molto improbabile in questo scenario.
 							<br>
-							Ma normalmente stai creando un nuovo nodo - quindi scegli semplicemente l'opzione NEW in questo menù
+							Ma dato che stiamo creando un nuovo nodo scegli semplicemente l'opzione NEW.
 							<br><br>
 							<img src="https://github.com/rootzoll/raspiblitz/raw/v1.7/pictures/ssh2-passwords.png">
 							<br><br>
-							In fine dovrai impostare tre password chiamate A, B & C. Scegli ogni password in modo unico, una sola stringa, senza spazi né caratteri speciali, e che sia almeno
+							Infine dovrai impostare tre password chiamate A, B & C. Scegli ogni password in modo unico e che sia almeno
 							lunga 8 caratteri.
 							Puoi usare questo <a href="https://github.com/rootzoll/raspiblitz/raw/v1.7/home.admin/assets/RaspiBlitzRecoverySheet.pdf">Foglio di recupero RaspiBlitz (PDF)</a> per
-							scrivere queste password per un salvataggio sicuro e anche per usarle dopo per il tuo seed.
+							scrivere queste password per un salvataggio sicuro di esse + seed.<br />
 							<br>
-							Inanzitutto, viene richiesta la password A: questa è la password che userai per accedere via SSH ed è la password impostata per qualunque utente di default: admin, root,
+							Password A: questa è la password che userai per accedere via SSH ed è quella impostata per qualunque utente di default: admin, root,
 							bitcoin & pi.
 							<br>
-							<i>Bitcoin e i servizi lightning saranno successivamente fatti girare in background (come deamons, demoni) e useranno l'utente separato "bitcoin" per motivi di sicurezza.
-								Questo utente non ha diritti di amministrazione e non può cambiare le impostazioni del sistema.
-							</i>
 							<br>
-							Dopo di che inserirai la password B: questa è usata internamente per l'interfaccia RPC di bitcoin. È anche utilizzata come modalità d'accesso ad applicazioni come
-							RTL-WebGUI o il blockexplorer.
+							Password B: questa è usata internamente per l'interfaccia RPC di bitcoin e per l'accesso alle applicazioni che colleghi al tuo nodo.
 							<br>
-							Infine la password C: questa viene utilizzata per per criptare/bloccare il wallet lightning nell'HDD/SDD ed è utilizzata per LND. Ogni volta che si avvia/riavvia,
-							il nodo lightning LND ha bisogno di caricare il wallet nella memoria per lavorarci e ti richiederà la password C per "sbloccare" il wallet.
+							<br />
+							Password C: questa viene utilizzata per per criptare il wallet lightning ed è utilizzata per LND. Ogni volta che si avvia/riavvia,
+							il nodo lightning LND ha bisogno di caricare il wallet nella memoria per lavorarci e ti richiederà la password C per "sbloccare" il portafoglio.
 							<br>
+							<br />
 							<i>Nelle versioni precedenti di RaspiBlitz era anche presente un'altra password (D), che non viene più utilizzata.</i>
 							<br>
-							Dopo questa procedura, il processo di inizializzazione avrà bisogno di un po'di tempo - attendi finché non avrà finito. Questa processo può richiedere dai 10 ai 30 minuti:
+							Dopo questa procedura il nodo comincera' ad inizializzarsi, questa processo può richiedere dai 10 ai 30 minuti:
 							<br><br>
 							<img src="https://github.com/rootzoll/raspiblitz/raw/v1.7/pictures/ssh4-scripts.png">
 							<br><br>
@@ -721,7 +713,7 @@
 								https://raspibolt.org/bonus/lightning/auto-unlock.html#bonus-guide-auto-unlock-lnd-on-startup</a>].
 							<br><br>
 							Può essere attivato sotto "Services" -> "Auto-unlock LND". Raccomandiamo di tenerlo attivo quando viene usato DynamicDNS. Se il tuo indirizzo IP pubblico cambia
-							sul tuo router, LND si riavvia in modo automatico, e senza lo sblocco automatico rimarrà inattivo/irraggiungibile fin quando non lo sbloccherai manualmente. 
+							sul tuo router, LND si riavvia in modo automatico, e senza lo sblocco automatico rimarrà inattivo/irraggiungibile fin quando non lo sbloccherai manualmente.
 							<a href="https://github.com/rootzoll/raspiblitz/blob/v1.7/FAQ.md#when-using-auto-unlock-how-much-security-do-i-lose">Quando usi Auto-Unlock, quanta sicurezza perdo?</a>
 							<br><br>
 							<b>LND backup statico del canale (StaticChannelBackup) su Nextcloud</b>
@@ -1468,7 +1460,7 @@
 							</i>
 							<br><br>
 							<ul>
-									
+
 								</a></li>
 								<li><a href="https://github.com/rootzoll/raspiblitz/blob/v1.7/FAQ.md#how-can-i-build-an-sd-card-from-another-branch">
 									Come posso creare una scheda SD da un altro branch?
