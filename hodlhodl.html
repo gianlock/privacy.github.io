@@ -102,14 +102,85 @@
                     </ul>
                     <br />
                     <h2 id="hodl">Cos'e' HODLHODL</h2>
-                    Hodlhodl e' un exchange P2P fondato all'inizio del che cerca, a differenza dei normali exchange, di minimizzare il piu' possibile la presenza di un middleman 
-                    (di base se stesso) all'interno degli scambi tra utenti, cercando di offrire un esperienza il piu' possibile semplice (favorita dalla centralizzazione del sito) ma
-                    anche privacy oriented (data dagli scambi tra utenti in modo peer-to-peer) ai suoi utenti. Per registrarsi basta solamente un username, una password e un indirizzo email
-                    (per avere maggiore sicurezza potreste usare un indirizzo email creato sotto tor specificamente solo per questo utilizzo)
-                    
                     <p>
-                        
+                        Hodlhodl e' un exchange P2P fondato all'inizio del 2018 che cerca, a differenza dei normali exchange, di minimizzare il piu' possibile la presenza di un middleman
+                        (di base se stesso) all'interno degli scambi tra utenti, cercando di offrire un esperienza il piu' possibile semplice (favorita dalla centralizzazione del sito) ma
+                        anche privacy oriented (data dagli scambi tra utenti in modo peer-to-peer) ai suoi utenti. Per registrarsi basta solamente un username, una password e un indirizzo email
+                        (per avere maggiore sicurezza potreste usare un indirizzo email creato sotto tor specificamente solo per questo utilizzo). In quanto il sito in nessuna parte custodisce i vostri
+                        bitcoin (vengono sempre utilizzati wallet multisig) puo' piu facilmente aggirare le varie regolamentazioni sempre piu' stringenti che riguardano gli exchange.
                     </p>
+                    <h2 id="hodl">Come avvengono i trade tra privati</h2>
+                    <p>
+                        Come prima spiegato questo sito offre trade in modo totalmente p2p, di conseguenza per effettuare uno scambio dovremmo trovare una controparte ed accettare una sua offerta
+                        oppure essere noi sul sito a pubblicarne una nostra.
+                        <center><img style="width:90%; height:90%;" src="assets/img/offerte.png"><br>
+                            <blackquote style="font-size: 80%; text-align: center; color: grey;">
+                                Screenshot della schermata delle offerte di persone che vendono bitcoin nel momento della stesura dell'articolo.
+                            </blackquote><br><br>
+                        </center>
+                        Una volta accettata un offerta ci troveremo in una chat con la controparte, il venditore dovra' bloccare i bitcoin per lo scambio in un wallet bitcoin multisig con firma 2 di 3
+                        (per poter muovere i fondi da questo wallet serviranno almeno 2 firme su e le controparti che detengono le chiavi per firmare sono compratore, venditore e hodlhodl) in questo modo
+                        se una volta che il compratore ha effettuato il pagamento al seller e' andato tutto bene entrambi firmano la transazione (processo che si fa tramite il click di un bottone) e i satoshi
+                        verranno inviati all'indirizzo fornito dal compratore, se invece qualcosa dovesse andare storto nel trade interviene un arbitro (terza firma di hodlhodl) che verifichera' cosa
+                        non e' andato nel trade ed evitera' eventuali scam o furti.
+                        E' anche presente un sistema di rating e recensioni nel quale potete vedere come e' stato valutata nei trade passati la controparte. Per una guida completa su come tradare in
+                        massima sicurezza vi rimando alla <a href="https://medium.com/hodl-hodl/trading-security-guide-2f35c20e58f4">guida ufficiale di hodlhodl</a>.
+                    </p>
+                    <h2 id="hodl">Proteggere la propria privacy quando si utilizza HodlHodl</h2>
+                    <p>
+                        Per utilizzare al meglio questo servizio proteggendo la propria privacy consiglio fortemente di prestare attenzione ai seguenti punti:
+                    <ul>
+                        <li>Registrarsi e accedere sempre e solo utilizzando Tor Browser.</li>
+                        <li>Utilizzare un indirizzo E-Mail creato Ad-Hoc sotto Tor solo per questo servizio.</li>
+                        <li>Evitare eventuali seller che richiedono il KYC (raro ma ce ne sono alcuni presenti).</li>
+                        <li>Prestare attenzione alle recensioni dei seller, in alcuni casi se doveste partecipare ad una disputa potreste dover rivelare dati sensibili.</li>
+                        <li>Scegliere attentamente quale metodo di pagamento FIAT decidete di usare in base al vostro treat model.</li>
+                        <li>Spostate i fondi appena acquistati o su LN o effettuate round di coinjoin.</li>
+                    </ul>
+                    Rispettando tutti i punti sopra citati riuscirete ad utilizzare la piattaforma con un ottimo livello di privacy andando cosi a minimizzare il leak di vostri dati personali sia
+                    verso il fornitore del servizio sia verso la controparte del trade.
+                    </p>
+                    <h2 id="hodl">Pro e contro</h2>
+                    <p>
+                        andiamo ad analizzare assieme quali sono i princpali Pro e Contro
+                    <table>
+                        <tr>
+                            <th style="color: forestgreen">Pro</th>
+                            <th style="color: red">Contro</th>
+                        </tr>
+                        <tr>
+                            <td>Molto semplice da utilizzare</td>
+                            <td>E' centralizzato</td>
+                        </tr>
+                        <tr>
+                            <td>Totalmente P2P</td>
+                            <td>Non ha un indirizzo .onion</td>
+                        </tr>
+                        <tr>
+                            <td>Molti metodi di pagamento accetatti</td>
+                            <td>Richiede un email</td>
+                        </tr>
+                        <tr>
+                            <td>No KYC</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>FEE molto basse</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Totalmente non custodial</td>
+                            <td></td>
+                        </tr>
+
+                    </table>
+                    </p>
+                    <h2 id="hodl">Sezione lending</h2>
+                    <p>
+                        La piattaforma Hodlhodl offre anche un servizio di lend e borrow p2p sempre basato su wallet multisig. Questo tipo di attivita' puo' essere molto interessante soprattutto per
+                        le persone che vivono la loro vita quotidiana pagando in bitcoin 
+                    </p>
+
 
 
 
@@ -124,10 +195,11 @@
     <footer>
         <a href="https://creativecommons.org/licenses/by-nc/3.0/deed.en_US">
             <span>
-                <b>Turtlecute33</b>
+                <b>Made with &#128154 by Turtlecute </b>
             </span>
-            <span>© 2021</span>
-        </a>
+            <span>© 2022</span>
+            </a>
+        
     </footer>
 </body>
 
