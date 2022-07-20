@@ -22,6 +22,22 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,900" />
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,700" />
 </head>
+<script>
+    ! function(c) {
+        var t = document.createElement("script");
+        t.type = "text/javascript", t.async = !0, t.onload = c, t.src = "CryptoDonateButton/src/widget.js";
+        var e = document.getElementsByTagName("script")[0];
+        e.parentNode.insertBefore(t, e)
+    }(function() {
+        Fr.loadCD(document.getElementById('lightning'), {
+            coin: "lightning",
+            address: "LNURL1DP68GURN8GHJ7MRW9E6XJURN9UH8WETVDSKKKMN0WAHZ7MRWW4EXCUP0X9URVEFC8YMRXDE5XPJKGDENV56RX7Q9TT6",
+            buttonClass: "medium",
+            dialogClass: "medium",
+        });
+    });
+
+</script>
 
 <body>
     <div id="wrapper">
@@ -39,6 +55,8 @@
                     </ul>
                 </nav><br><br>
                 <a href="guide.html" style="font-size: 130%">Guide e tutorial</a>
+                <br><br>
+                <span id="lightning"></span>
             </header>
         </div>
     </div>
