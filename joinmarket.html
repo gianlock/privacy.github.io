@@ -187,10 +187,10 @@
                     <p>Sistemi operativi:</p>
                     <button class="collapsible">Raspiblitz</button>
                     <div class="content">
-                        <p>Dal menu principale del vostro OS andate nella sezione ´services´ per installare servizi aggiuntivi e mettete la spunta a ´ joinmarket & joininbox'.<br><br>
-                            Una volta installato, per accedere alla linea di comando, vi basterà sul menu iniziale andare su 'Exit' e poi dare il comando 'jm' a nella shell per passare
+                        <p>Dal menu principale del vostro OS andate nella sezione ´services´ per installare servizi aggiuntivi e mettete la spunta a ´joinmarket & joininbox´.<br><br>
+                            Una volta installato, per accedere alla linea di comando, vi basterà sul menu iniziale andare su ´Exit´ e poi dare il comando ´jm´ a nella shell per passare
                             ad un utente dedicato all' utilizzo di solo joinmarket.<br><br>
-                            Di default su raspiblitz si avviera' Joininbox (una GUI per JM), per accedere alla linea di comando vi bastera' andare su 'Exit' nel menu.
+                            Di default su raspiblitz si avviera' Joininbox (una GUI per JM), per accedere alla linea di comando vi bastera' andare su ´Exit´ nel menu.
                         </p>
                     </div><br>
                     <button class="collapsible">Umbrel</button>
@@ -206,7 +206,7 @@
                     </div><br>
                     <button class="collapsible">Raspibolt</button>
                     <div class="content">
-                        <p>Tutta la parte di installazione e setup di Joinmarket è gia coperta come parte opzionale all' interno della guida raspibolt.</p>
+                        <p>Tutta la parte di installazione e setup di Joinmarket è gia coperta come parte opzionale all'interno della guida raspibolt.</p>
                     </div>
 
                     <script>
@@ -302,7 +302,7 @@ python wallet-tool.py wallet.jmdat
                     <ul>
                         <li>New (address mai usato)</li>
                         <li>Change-out (resto di una precedente transazione)</li>
-                        <li>Cj-out (output di un coinjoin(</li>
+                        <li>Cj-out (output di un coinjoin)</li>
                     </ul>
                     ecco un esempio pratico del risultato:
                     <pre>
@@ -430,9 +430,9 @@ Total balance:	0.00000000
                     <h2 id="tumbler">Tumbler</h2>
                     <p>
                         Eccoci finalmente alla parte piú succosa di JoinMarket, il tumbler!<br>
-                        se avete ascoltato il podcast sapete già di cosa si tratta, salteró quindi spiegazioni teoriche inutili e passeró direttamente al lato pratico. Un unica raccomandazione prima di inziare, ATTENTI ALLE FEE! Ricordatevi di settare
-                        i limiti nel file joinmarket.cfg (come spiegato all'inzio) e valutate di far girare il programma solo quando le fee onchain sono relativamente basse (sotto i 10 sats/vB).<br>
-                        Per lanciare il tumbler è necessario aver prima di tutto stoppato lo script da maker (se questo era attivo), dopo di chè potremo lanciare il comando per far partire il comando:<br><br>
+                        se avete ascoltato il podcast sapete già di cosa si tratta, salteró quindi spiegazioni teoriche inutili e passeró direttamente al lato pratico. Un unica raccomandazione prima di iniziare, ATTENTI ALLE FEE! Ricordatevi di settare
+                        i limiti nel file joinmarket.cfg (come spiegato all'inizio) e valutate di far girare il programma solo quando le fee onchain sono relativamente basse (fee minima per entrare in un blocco sotto i 10 sats/vB).<br>
+                        Per lanciare il tumbler è necessario aver prima di tutto stoppato lo script da maker (se questo era attivo), dopodichè potremo lanciare il comando per far partire tumbler:<br><br>
                         <code class="language-plaintext highlighter-rouge">python tumbler.py *nome del wallet* *indirizzo1 su cui ricevere* *indirizzo2 su cui ricevere* *indirizzo3 su cui ricevere*</code><br><br>
                         è fondamentale inserire ALMENO 3 indirizzi di output per il tumbler, questo serve a garantire una buona resa di privacy e non creare link evidenti tra gli UTXO durante tutto il processo. Come al solito aggiungendo l'argomento --help al comando è
                         possibile andare a vedere tutti i settings aggiuntivi. Andiamo a visionare un esempio piú complesso con regole piú avanzate:<br><br>
@@ -440,7 +440,7 @@ Total balance:	0.00000000
                         <blackquote style="color:grey; font-size: 85%"><code class="language-plaintext highlighter"> In questo caso abbiamo lanciato uno script di tumbling che non userà il numero di controparti di default (il parametro -N indica che richiediamo
                                 7 controparti con una varianza massima di 2, quindi un numero di maker random da 5 a 9) e con un numero maggiore di coinjoin per mixdepth (di default questo script effettua un numero random di coinjoin per sezione del wallet che va da 1 a 3,
                                 usando il comando -c 3 1 invece sarà da 2 A 4).In questo modo spenderemo piú sats in fee ma avremo un anonimity set maggiore. </code></blackquote><br><br>
-                        è possibile anche aggiungere quanti indirizzi di output si vogliono (minimo 3, non cè un massimo se non il buon senso), non è possibile invece (per questioni di privacy) decidere come saranno distribuiti i satoshi tra gli indirizzi specificati
+                        è possibile anche aggiungere quanti indirizzi di output si vogliono (minimo 3, non c'è un massimo se non il buon senso), non è possibile invece (per questioni di privacy) decidere come saranno distribuiti i satoshi tra gli indirizzi specificati
                         come output del tumbler.<br><br>
                         Il tumbler è un processo volutamente lungo, occasionalmente potrebbe capitare che qualcosa smetta di funzionare, nella maggior parte dei casi questo si auto-fixerà nel giro di poche ore. In caso di crash totale potremo tentare di riavviarlo
                         con il comando:<br><br>
@@ -448,8 +448,8 @@ Total balance:	0.00000000
                         oppure basterà ridare un nuovo comando di tumbling, questo non riprenderà esattamente lo scheduling del tumbler precedente ma inizierà un nuovo ciclo di mixing.<br>
                     </p>
                     <h2 id="conc">Conclusioni</h2>
-                    JoinMarket è un software davvero sconfinato e totalmente personalizzabile, in questa guida abbiamo coperto le funzioni principali in modo da rendere possibile per chiunque, anche se è chiaro che usare questo software non è una passeggiata.
-                    l'utilizzo di questo programma. Uno dei maggiori problemi di JM è proprio questo, il numero di persone che lo usano e che fanno da maker, se pochi utenti sfruttano questo software, la privacy generale (anonimity set) si abbassa, ecco perchè spero che questa
+                    JoinMarket è un software davvero sconfinato e totalmente personalizzabile, in questa guida abbiamo coperto le funzioni principali in modo da rendere possibile per chiunque, l'utilizzo di questo programma - anche se è chiaro che usare questo software non è una passeggiata!
+                    Uno dei maggiori problemi di JM è proprio questo, il numero di persone che lo usano e che fanno da maker, se pochi utenti sfruttano questo software, la privacy generale (anonimity set) si abbassa, ecco perchè spero che questa
                     guida possa incentivare l'uso e vi convinca ad installare il mio software preferito per fare coinjoin. In caso vogliate approfondire ancora di più alcuni aspetti vi consiglio caldamente di dare una letta ai vari documenti presenti su github, sono
                     veramente ben fatti e li potete reperire <a href=¨https://github.com/JoinMarket-Org/joinmarket-clientserver/tree/master/docs¨>qui</a>.<br><br>
                     Buon mixing tartarughe!&#128034; &#128154;
