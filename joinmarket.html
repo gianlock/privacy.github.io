@@ -134,13 +134,12 @@
                     <center>
                         <img style="width:60%; height:60%;" src="assets/img/jm.png">
                         <h1>
-                            Guida da 0 a eroe di JoinMarket
-                            <!-- rivedere il titolo. in italiano non rende bene come in inglese -->
+                            La Guida da 0 a Eroe di Joinmarket
                         </h1>
                         <br>
                     </center>
                     <p>
-                        Se avete trovato questa pagina googlando "Join<b style="color: greenyellow">T</b>market" avete tutta la mia sincera
+                        Se avete trovato questa pagina cercando online "Join<b style="color: greenyellow">T</b>market" avete tutta la mia sincera
                         stima. Siete capitati però in una guida che tratta un argomento completamente differente ma estremamente interessante! &#128684;&#127809; <br><br>
                         L'obbiettivo di questo tutorial é quello di illustrare il funzionamento teorico e pratico -passo dopo passo- di JoinMarket.<br><br>
                         Questa guida ha richiesto tantissimo lavoro, tempo e impegno per essere completata e la do a disposizione completamente gratis. Se hai trovato i contenuti
@@ -154,17 +153,17 @@
                     <br />
                     <h2>Tabella dei contenuti</h2>
                     <ul>
-                        <li><a href="#teoria">Spiegazione teorica</a></li>
+                        <li><a href="#teoria">Definizione teorica Joinmarket</a></li>
                         <li><a href="#install">Installazione</a></li>
                         <li><a href="#conf">File di configurazione</a></li>
                         <li><a href="#rules">Setup</a></li>
-                        <li><a href="#rules">inviare</a></li>
-                        <li><a href="#maker">Maker</a></li>
+                        <li><a href="#rules">Inviare bitcoin</a></li>
+                        <li><a href="#maker">Fare da Maker</a></li>
                         <li><a href="#tumbler">Tumbler</a></li>
                         <li><a href="conc">Conclusioni</a></li>
                     </ul>
                     <br>
-                    <h2 id="teoria">Spiegazione teorica</h2>
+                    <h2 id="teoria">Definizione teorica Joinmarket</h2>
                     <p>
                         Possiamo definire JoinMarket come uno strumento, o un wallet, che permette di effettuare CoinJoin
                         con altri utenti in maniera totalmente trustless e senza alcun coordinatore centrale.<br>
@@ -191,7 +190,7 @@
                         <p>Dal menu principale del vostro sistema operativo (da questo punto in poi chiamato semplicemente OS) andate nella sezione ´SERVICES´ per installare i servizi aggiuntivi e mettete la spunta a 'JOINMARKET & JOININBOX'.<br><br>
                             Una volta installato, per accedere alla linea di comando, dal menu iniziale andate su 'EXIT' e poi inviate il comando 'jm' nella shell per passare
                             ad un utente dedicato all' utilizzo di solo joinmarket.<br><br>
-                            Di default su raspiblitz si avviera' Joininbox (una GUI per JM), per accedere alla linea di comando vi bastera' andare su 'Exit' nel menu.
+                            Di default su raspiblitz si avviera' Joininbox (una GUI per JM), per accedere alla linea di comando vi bastera' andare su ´Exit´ nel menu.
                         </p>
                     </div><br>
                     <button class="collapsible">Umbrel</button>
@@ -202,12 +201,12 @@
                     </div><br>
                     <button class="collapsible">MyNode</button>
                     <div class="content">
-                        <p>Su mynode basta aprire un terminale ssh al vostro nodo per accedere alla linea di comando, arrivati qua JoinMarket sará giá preinstallato sul vostro sistema e potrete andare nella cartella
-                            contente gli script per usare le varie funzioni da shell oppure lanciare joininbox con il comando ¨sudo mynode-joininbox¨. Questa guida coprirá l'utilizzo di JM da terminale usando i vari script pre-installati.</p>
+                        <p>Su mynode basta aprire un terminale ssh al vostro nodo per accedere alla linea di comando, arrivati qua JoinMarket sarà già preinstallato sul vostro sistema e potrete andare nella cartella
+                            contenente gli script per usare le varie funzioni da shell oppure lanciare joininbox con il comando ¨sudo mynode-joininbox¨. Questa guida coprirà l'utilizzo di JM da terminale usando i vari script pre-installati.</p>
                     </div><br>
                     <button class="collapsible">Raspibolt</button>
                     <div class="content">
-                        <p>Tutta la parte di installazione e setup di Joinmarket é gia coperta come parte opzionale all' interno della guida raspibolt.</p>
+                        <p>Tutta la parte di installazione e setup di Joinmarket è gia coperta come parte opzionale all'interno della guida raspibolt.</p>
                     </div>
 
                     <script>
@@ -236,7 +235,7 @@
                         di seguito elencate sono utili da conoscere per adattare il funzionamento del software alle esigenze personali pur non essendo obbligatorie.<br><br>
                         Prima di tutto spostiamoci nella cartella <code class="language-plaintext highlighter-rouge">joinmarket/scripts</code> e lanciamo il comando:<br><br>
                         <code class="language-plaintext highlighter-rouge">python wallet-tool.py generate</code><br><br>
-                        a questo punto dovremmo ottenere un errore, ma cosi facendo il software ci genererá un file di settings pre-impostato.
+                        a questo punto dovremmo ottenere un errore, ma cosi facendo il software ci genererà un file di settings pre-impostato.
                         potremo andare a modificare il file di configurazione da terminale con:<br>
                     <p><code class="language-plaintext highlighter-rouge">nano joinmarket.cfg</code></p> oppure
                     <p><code class="language-plaintext highlighter-rouge">vim joinmarket.cfg</code></p>
@@ -264,7 +263,7 @@
                             . Potremmo lasciare questo campo a 0 oppure aumentare fino a 500000 (sats), 1000000 (sats), ecc...</li>
                     </ul>
                     prestate molta attenzione a non modificare per sbaglio i campi errati, alcune delle varibili presenti nel file joinmarket.cfg se impostate erroneamente potrebbero compromettere la funzionalitá del software o annientare completamente la vostra privacy,
-                    occhi aperti e attenzione al massimo! <!-- specificare quali valori non vanno toccati? -->
+                    occhi aperti e attenzione al massimo! 
                     </p>
                     <h2 id="rules">Setup dell'ambiente di lavoro</h2>
                     <p>
@@ -304,7 +303,7 @@ python wallet-tool.py wallet.jmdat
                     <ul>
                         <li>New (address mai usato)</li>
                         <li>Change-out (resto di una precedente transazione)</li>
-                        <li>Cj-out (output di un coinjoin(</li>
+                        <li>Cj-out (output di un coinjoin)</li>
                     </ul>
                     ecco un esempio pratico del risultato:
                     <pre>
@@ -376,7 +375,7 @@ Total balance:	0.00000000
                     ora possiamo procedere a depositare i nostri primi satoshi all'interno di uno o piú indirizzi ricordando che, indipendendentemente da maker o taker, il software
                     non andrá mai a consolidare utxo in mixdepth diversi direttamente, in questo modo potremo tenere separati utxo con diverso livello di privacy all'interno del wallet.<br>
                     </p>
-                    <h2 id=¨send¨>Invio di fondi con singolo coinjoin o senza di esso</h2>
+                    <h2 id=¨send¨>Inviare bitcoin con coinjoin singolo o senza</h2>
                     <p>
                         Possiamo ora muovere i nostri satoshi. Uno dei comandi principali di questo software é lo script:<br><br>
                         <code class="language-plaintext highlighter-rouge">pyhton sendpayment.py</code><br><br>
@@ -399,9 +398,9 @@ Total balance:	0.00000000
                     il comando sendpayment serve per muovere fondi da joinmarket a wallet esterni o per inviare satoshi ad una persona aggiungendo un layer di privacy tra noi e lui. Per
                     guadagnare un sufficiente livello di privacy sui nostri UTXO é piú indicato usare il comando tumbler.py che spiegheremo piú avanti in questa guida.<br><br>
                     </p>
-                    <h2 id="maker">Maker</h2>
+                    <h2 id="maker"> Fare da Maker</h2>
                     <p>
-                        Lo script che andremo a trattare in questa sezione é:<br><br>
+                        Lo script che andremo a trattare in questa sezione è:<br><br>
                         <code class="language-plaintext highlighter-rouge"> yg-privacyenhanced.py </code><br><br>
                         Questo programma serve per agire come maker nel marcato di joinmarket. Il software si connetterá al nostro nodo bitcoin ed al mercato interno della piattaforma in cui i maker si presentano come offerenti di
                         liquiditá e i taker cercano le controparti.<br>
@@ -439,7 +438,7 @@ Total balance:	0.00000000
                         É fondamentale inserire ALMENO 3 indirizzi di output per il tumbler: questo serve a garantire una buona privacy e a non creare link evidenti tra gli UTXO durante tutto il processo. Come al solito aggiungendo --help al comando é
                         possibile andare a vedere tutti i dettagli aggiuntivi. Andiamo a visionare un esempio piú complesso con regole avanzate:<br><br>
                         <code class="language-plaintext highlighter-rouge">pyhton tumbler.py TestWallet -N 7 2 -c 3 1 bc1qz3f80rtv0ux85d7rc06ldtvmpqyfx6ly48c9pa bc1qf3wljw44utyv7qd0z57zvdkfl20y470mva0nes bc1qw48asjpkwm3k2w8cketqhrre0uwq9f7ypwzmxl </code><br>
-                        <blackquote style="color:grey; font-size: 85%"><code class="language-plaintext highlighter"> In questo caso abbiamo lanciato uno script di tumbling che non userá il numero di controparti di default (il parametro -N indica che richiediamo
+                        <blackquote style="color:grey; font-size: 85%"><code class="language-plaintext highlighter"> In questo caso abbiamo lanciato uno script di tumbling che non userà il numero di controparti di default (il parametro -N indica che richiediamo
                                 7 controparti con una varianza massima di 2, quindi un numero di maker random da 5 a 9) e con un numero maggiore di coinjoin per mixdepth (di default questo script effettua un numero random di coinjoin per sezione del wallet che va da 1 a 3,
                                 usando il comando -c 3 1 invece sará da 2 A 4).In questo modo spenderemo piú sats in fee ma avremo un anonimity set maggiore. </code></blackquote><br><br>
                         É possibile anche aggiungere quanti indirizzi di output si vogliono (minimo 3, non cé un massimo se non il buon senso). Non é invece possibile, per questioni di privacy, decidere come saranno distribuiti i satoshi tra gli indirizzi specificati
