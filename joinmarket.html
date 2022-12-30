@@ -231,7 +231,7 @@
                     <p>
                         JoinMarket é un software personalizzabile e con un'infinitá di settaggi; quest'ultimi sono specificati in un file di configurazione presente nella directory principale
                         del programma chiamato ´Joinmarket.cfg´.<br><br>
-                        In questa sezione andremo a analizzare alcuni campi che potrebbe essere interessante, in base alle proprie esigenze, approfondire e/o modificare. Vorrei sottolineare che tutte le modifiche
+                        In questa sezione andremo ad analizzare alcuni campi che potrebbe essere interessante, in base alle proprie esigenze, approfondire e/o modificare. Vorrei sottolineare che tutte le modifiche
                         di seguito elencate sono utili da conoscere per adattare il funzionamento del software alle esigenze personali pur non essendo obbligatorie.<br><br>
                         Prima di tutto spostiamoci nella cartella <code class="language-plaintext highlighter-rouge">joinmarket/scripts</code> e lanciamo il comando:<br><br>
                         <code class="language-plaintext highlighter-rouge">python wallet-tool.py generate</code><br><br>
@@ -287,10 +287,10 @@
   Input wallet file name (default: wallet.jmdat): 
   saved to wallet.jmdat
                    </code></pre><br>
-                    in caso dia errore é molto probabile che abbiamo settato male i 4 campi RPC sopra specificati. Nel caso potrebbe aiutare seguire <a href=¨https://github.com/JoinMarket-Org/joinmarket-clientserver/blob/master/docs/USAGE.md#configure¨>
+                    in caso dia errore é molto probabile che abbiamo settato male i 4 campi RPC sopra specificati. Nel caso potrebbe aiutare seguire <a href='https://github.com/JoinMarket-Org/joinmarket-clientserver/blob/master/docs/USAGE.md#configure'>
                         questa guida</a> presente nella documentazione originale di JM.<br><br>
                     Abbiamo completato il setup del nostro ambiente di lavoro e possiamo cominciare ad esplorare i comandi che piú ci torneranno utili.
-                    Tutti i comandi di cui parleremo possono essere lanciati in console seguiti da ´--help´ per avere una spiegazione approfondita.<br><br>
+                    Tutti gli script di cui parleremo possono essere lanciati in console seguiti da ´--help´ per avere una spiegazione approfondita.<br><br>
                     Possiamo ora provare a lanciare:
                     <pre class="notranslate">
                     <code>
@@ -373,13 +373,13 @@ Total balance:	0.00000000
             </code>
             </pre>
                     ora possiamo procedere a depositare i nostri primi satoshi all'interno di uno o piú indirizzi ricordando che, indipendendentemente da maker o taker, il software
-                    non andrá mai a consolidare utxo in mixdepth diversi direttamente, in questo modo potremo tenere separati utxo con diverso livello di privacy all'interno del wallet.<br>
+                    non andrá mai a consolidare utxo in mixdepth diversi direttamente, in questo modo potremo tenere separati sats con diverso livello di privacy all'interno del wallet.<br>
                     </p>
                     <h2 id=¨send¨>Inviare bitcoin con coinjoin singolo o senza</h2>
                     <p>
                         Possiamo ora muovere i nostri satoshi. Uno dei comandi principali di questo software é lo script:<br><br>
                         <code class="language-plaintext highlighter-rouge">pyhton sendpayment.py</code><br><br>
-                        che ci permetterá di inviare satoshi ad altri indirizzi con o senza coinjoin. Andiamo ad analizzare il suo funzionamento ed alcuni esempi pratici. Di default 
+                        che ci permetterá di inviare transazioni ad altri indirizzi con o senza coinjoin. Andiamo ad analizzare il suo funzionamento ed alcuni esempi pratici. Di default 
                         la formattazione del comando é:
                     <pre><code style="font-size: 80%">python sendpayment.py *nome del wallet* *opzioni visionabili con --help* *ammontare di satoshi* *indirizzo di destinazione*</code></pre>
                     un esempio basic di utilizzo potrebbe essere:<br><br>
@@ -416,8 +416,8 @@ Total balance:	0.00000000
                         <li>Il fidelity é facilmente riconoscibile onchain, pertanto é consigliabile depositare fondi attraverso un coinjoin e con provenienza non collegata alla vostra identitá. La stessa cosa é consigliabile farla anche una volta che vorrete
                             spostare il bond scaduto fuori da JM.</li>
                     </ul>
-                    É importante ricordare che é possibile refillare il bond con una sola transazione, in caso di multipli UTXO solo il maggiore verrà considerato valido per il FB.<br><br>
-                    Trattiamo ora lo script citato all'inizio di questo paragrafo, una volta creato il fidelity (opzionale) siamo pronti per avviare l'eseguibile per fare da maker su joinmarket.<br>
+                    É importante ricordare che é possibile refillare il fidelity con una sola transazione, in caso di multipli UTXO solo il maggiore verrà considerato valido per il FB.<br><br>
+                    Trattiamo ora lo script citato all'inizio di questo paragrafo, una volta creato il bond (opzionale) siamo pronti per avviare l'eseguibile per fare da maker su joinmarket.<br>
                     Una volta depositati i satoshi ai vari indirizzi e mixdepth potremo dare il comando:<br><br>
                     <code class="language-plaintext highlighter-rouge">python yg-privacyenhanced.py *nome del wallet*</code><br><br>
                     Da questo momento in poi (dopo qualche minuto di collegamento alla rete) e fino a quando non interromperemo lo script, il nostro client JM comparirà sulla lista dei maker attivi sul protocollo e offrirá la nostra liquiditá
@@ -442,11 +442,14 @@ Total balance:	0.00000000
                                 7 controparti con una varianza massima di 2, quindi un numero di maker random da 5 a 9) e con un numero maggiore di coinjoin per mixdepth (di default questo script effettua un numero random di coinjoin per sezione del wallet che va da 1 a 3,
                                 usando il comando -c 3 1 invece sará da 2 A 4).In questo modo spenderemo piú sats in fee ma avremo un anonimity set maggiore. </code></blackquote><br><br>
                         É possibile anche aggiungere quanti indirizzi di output si vogliono (minimo 3, non cé un massimo se non il buon senso). Non é invece possibile, per questioni di privacy, decidere come saranno distribuiti i satoshi tra gli indirizzi specificati
-                        come output del tumbler.<br><br>
+                        come output.<br><br>
                         Il tumbler é un processo volutamente lungo, occasionalmente potrebbe capitare che qualcosa smetta di funzionare, nella maggior parte dei casi questo si risolverà in autonomia nel giro di poche ore. In caso di crash totale potremo tentare di riavviarlo
                         con il comando:<br><br>
                         <code class="language-plaintext highlighter-rouge">python tumbler.py --restart</code><br><br>
                         oppure basterá far ripartire un nuovo comando di tumbling. Questo non avvierà lo scheduling del tumbler precedente ma inizierá un nuovo ciclo di mixing.<br>
+                        In caso chiudendo il terminale SSH al vostro nodo si interrompa anche lo script potrete sfruttare il programma 'TMUX' installabile con il comando:<br><br>
+                        <code class="language-plaintext highlighter-rouge">sudo apt install tmux</code><br><br>
+                        Lanciandolo da shell digitando 'tmux' vi si aprirá un terminale che rimarrá attivo in background anche chiudendo la connessione remota. Quando vi ri-connetterete al vostro nodo con il comando: 'tmux attach' ri-aprirete la shell lasciata aperta.
                     </p>
                     <h2 id="conc">Conclusioni</h2>
                     JoinMarket é un software sconfinato e personalizzabile. In questa guida abbiamo scoperto le funzioni principali in modo da rendere possibile per chiunque (o almeno ci ho provato, mi rendo conto che usare questo software non é una passeggiata)
